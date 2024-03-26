@@ -10,8 +10,8 @@ export default class Cliente {
     public nome?: string
     public nomeSocial?: string
     private cpf: number
+    private cod = Cliente.proximoCodigo;
     private static proximoCodigo: number = 1;
-    private cod: number;
     private rg?: RG
     private dataCadastro: Date = new Date();
     private telefone: number
