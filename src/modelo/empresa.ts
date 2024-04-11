@@ -1,20 +1,22 @@
 import Cliente from "./cliente"
 import Produto from "./produto"
-import Servico from "./serviço"
+import Venda from "./venda"
 
+export default class Empresa {
+    private static clientes: Cliente[];
+    private static produtos: Produto[];
+    private static vendas: Venda[];
 
-export default class Empresa{
-    private clientes: Array<Cliente>
-    private produtos: Array<Produto>
-    private servicos: Array<Servico>
     constructor() {
-        this.clientes = []
+        Empresa.clientes = [];
+        Empresa.produtos = [];
+        Empresa.vendas = [];
         this.preCadastrarClientes();
-        this.produtos = []
         this.preCadastrarProdutos();
-        this.servicos = []
+        this.preCadastrarVendas();
     }
-    private preCadastrarClientes(): void {
+
+     private preCadastrarClientes(): void {
         const dataCadastro = new Date();
         const listaDeClientes = [
             { nome: "João da Silva", cpf: 12354387654, telefone: 11789653214},
@@ -47,20 +49,19 @@ export default class Empresa{
             { nome: "Rafael Fernandes", cpf: 21098765432, telefone: 11210987654 },
             { nome: "Fernanda Gomes", cpf: 10987654321, telefone: 11109876543 },
             { nome: "Thiago Silva", cpf: 99887766554, telefone: 11098765432 }
-        ]
-
-        listaDeClientes.forEach(cliente => {
-            this.clientes.push(new Cliente(dataCadastro, cliente.nome, cliente.cpf, cliente.telefone, ""));
-        });
-    }
-
+            ];
+            listaDeClientes.forEach(cliente => {
+                Empresa.clientes.push(new Cliente(dataCadastro, cliente.nome, cliente.cpf, cliente.telefone, ""));
+            })
+        }
+         
     private preCadastrarProdutos(): void {
         const listaDeProdutos = [
                 { nome: "Gel para cabelo n5", categoria: "Cosméticos", dataValidade: new Date(2025, 4, 25), preco: 10.99, custo: 1.85 },
                 { nome: "Shampoo Anticaspa", categoria: "Cabelo", dataValidade: new Date(2024, 8, 30), preco: 12.99, custo: 8.99 },
                 { nome: "Condicionador Hidratante", categoria: "Cabelo", dataValidade: new Date(2024, 11, 15), preco: 9.99, custo: 6.99 },
                 { nome: "Gel Fixador", categoria: "Cabelo", dataValidade: new Date(2024, 9, 20), preco: 7.49, custo: 4.99 },
-                { nome: "Creme para Barbear", categoria: "Barba", dataValidade: new Date(2024, 10, 25), preco: 15.99, custo: 12.49 },
+                { nome: "Creme para Barbear  ", categoria: "Barba", dataValidade: new Date(2024, 10, 25), preco: 15.99, custo: 12.49 },
                 { nome: "Óleo para Barba", categoria: "Barba", dataValidade: new Date(2024, 7, 28), preco: 11.49, custo: 8.99 },
                 { nome: "Pente de Madeira", categoria: "Acessório", dataValidade: new Date(2025, 0, 10), preco: 5.99, custo: 3.99 },
                 { nome: "Cera Modeladora", categoria: "Cabelo", dataValidade: new Date(2024, 6, 15), preco: 8.99, custo: 6.49 },
@@ -79,18 +80,56 @@ export default class Empresa{
                 ];
                 
                 listaDeProdutos.forEach(produto => {
-                    this.produtos.push(new Produto(produto.nome, produto.categoria, produto.dataValidade, produto.preco, produto.custo));
+                    Empresa.produtos.push(new Produto(produto.nome, produto.categoria, produto.dataValidade, produto.preco, produto.custo));
                 });    
             }
-    public get getClientes(){
-        return this.clientes
+    
+     private preCadastrarVendas(): void {
+        const dataVenda = new Date();
+        const listaDeVendas = [
+            { codProduto: 10, qtd: 3, codCliente: 8 },
+            { codProduto: 2, qtd: 1, codCliente: 8 },
+            { codProduto: 15, qtd: 2, codCliente: 2 },
+            { codProduto: 6, qtd: 2, codCliente: 5 },
+            { codProduto: 14, qtd: 1, codCliente: 5 },
+            { codProduto: 2, qtd: 1, codCliente: 8 },
+            { codProduto: 5, qtd: 6, codCliente: 7 }
+        ];
+
+        listaDeVendas.forEach(vendas => {
+            const produto = Empresa.getProdutosPorId(vendas.codProduto);
+            const cliente = Empresa.getClientePorId(vendas.codCliente);
+            if (produto !== null && cliente !== null) {
+                Empresa.vendas.push(new Venda(produto, cliente, dataVenda, vendas.codProduto, vendas.qtd, vendas.codCliente))
+            }
+        }); 
     }
-    public get getProdutos(){
-        return this.produtos
+    public get getClientes(): Array<Cliente> {
+        return Empresa.clientes;
     }
-    public get getServicos(){
-        return this.servicos
+    public get getVendas(): Array<Venda> {
+        return Empresa.vendas;
+    }
+    
+    public get getProdutos(): Array<Produto>{
+        return Empresa.produtos;
     }
 
+    public static getProdutosPorId(id: number): Produto | null {
+        for (const produto of Empresa.produtos) {
+            if (produto.getCod === id.toString()) {
+                return produto;
+            }
+        }
+        return null;
+    }
+
+    public static getClientePorId(id: number): Cliente | null {
+    for (const cliente of this.clientes) {
+        if (parseInt(cliente.getCod) === id) {
+            return cliente;
+        }
+    }
+    return null;
 }
-
+}

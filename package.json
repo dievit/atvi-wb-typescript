@@ -1,5 +1,5 @@
 {
-  "name": "atvi-wb-typescript",
+  "name": "c",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -12,5 +12,6 @@
     "prompt-sync": "^4.2.0",
     "sqlite3": "^5.1.7"
   },
-  "description": ""
+  "description": "OPP class project",
+  "devDependencies": {}
 }

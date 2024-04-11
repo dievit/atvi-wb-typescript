@@ -11,7 +11,7 @@ export default class CadastroProduto extends Cadastro {
         this.entrada = new Entrada()
     }
     public cadastrar(): void {
-        console.log(`\nInício do cadastro de Cliente`);
+        console.log(`\nInício do cadastro do Produto`);
         let nome = this.entrada.receberTexto(`Informe o nome do produto: `)
         let categoria = this.entrada.receberTexto(`Informe a categoria do produto: `)
         let dataVal = this.entrada.receberTexto(`Informe a data de validade, se houver, no padrão dd/mm/aaaa: `)
