@@ -10,8 +10,9 @@ export default class Cliente {
     private static proximoCodigo: number = 1;
     private dataCadastro: Date = new Date();
     private telefone: number
-    private produtosConsumidos!: Array<Produto>
-    private produtosVendidos!: Array<Venda>
+    private vendas: Venda[] = [];
+/*     private produtosConsumidos!: Array<Produto>
+    private produtosVendidos!: Array<Venda> */
     
     constructor(dataCadastro: Date, nome: string, cpf: number, telefone: number, nomeSocial?: string) {
             this.nome = nome
@@ -22,11 +23,14 @@ export default class Cliente {
             this.telefone = telefone
             this.nomeSocial = nomeSocial
 
-            this.produtosConsumidos = []
+/*             this.produtosConsumidos = []
             this.produtosVendidos = []
-        
+ */        
     }
 
+    public adicionarVenda(venda: Venda): void {
+        this.vendas.push(venda);
+    }
     public get getCod(): string {
         return this.cod.toString();
     }
@@ -41,9 +45,9 @@ export default class Cliente {
         return this.dataCadastro
     }
 
-    public get getProdutosConsumidos(): Array<Produto> {
+/*     public get getProdutosConsumidos(): Array<Produto> {
         return this.produtosConsumidos
     }
-
+ */
     
 }

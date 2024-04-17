@@ -17,9 +17,17 @@ export default class ListagemProdutos extends Listagem {
             console.log(`Data de validade: ` + (produto.getDataValidade ? produto.getDataValidade : "sem validade"))
             console.log(`Preço de custo: R$` + produto.getCusto)
             console.log(`Preço de venda: R$` + produto.getPreco)
-            console.log(`Margem de lucro: ` + produto.getMargemLucro,`%`)
+            console.log(`Margem de lucro: ` + produto.getMargemLucro)
             console.log(`********************************`)
         })
         console.log(`\n`)
+    }
+
+    public listarPorQtdVendida(): Array<Produto> {
+        return this.produtos.slice().sort((a, b) => b.getQtdVendida - a.getQtdVendida);
+    }
+
+    public listarPorValorTotalVendido(): Array<Produto> {
+        return this.produtos.slice().sort((a, b) => b.getValorTotalVendido() - a.getValorTotalVendido());
     }
 }

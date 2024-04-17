@@ -85,7 +85,6 @@ export default class Empresa {
             }
     
      private preCadastrarVendas(): void {
-        const dataVenda = new Date();
         const listaDeVendas = [
             { codProduto: 10, qtd: 3, codCliente: 8 },
             { codProduto: 2, qtd: 1, codCliente: 8 },
@@ -95,14 +94,18 @@ export default class Empresa {
             { codProduto: 2, qtd: 1, codCliente: 8 },
             { codProduto: 5, qtd: 6, codCliente: 7 }
         ];
+        
+        listaDeVendas.forEach(venda => {
+            const produto = Empresa.getProdutosPorId(venda.codProduto);
+            const cliente = Empresa.getClientePorId(venda.codCliente);
 
-        listaDeVendas.forEach(vendas => {
-            const produto = Empresa.getProdutosPorId(vendas.codProduto);
-            const cliente = Empresa.getClientePorId(vendas.codCliente);
-            if (produto !== null && cliente !== null) {
-                Empresa.vendas.push(new Venda(produto, cliente, dataVenda, vendas.codProduto, vendas.qtd, vendas.codCliente))
+            if (produto && cliente) {
+                const dataVenda = new Date();
+                Empresa.vendas.push(new Venda(([{produto, qtd: venda.qtd}]), dataVenda, venda.codCliente))
+            } else {
+                console.error('Produto ou cliente não encontrado: ${JSON.stringify(venda)}')
             }
-        }); 
+        })
     }
     public get getClientes(): Array<Cliente> {
         return Empresa.clientes;

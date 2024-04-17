@@ -7,6 +7,7 @@ export default class Produto {
     private preco: number;
     private custo: number;
     private qtdVendida: number;
+    private valorTotalVendido: number;
     private margemLucro: number;
 
     constructor(nome: string, categoria: string, dataValidade: Date, preco: number, custo: number) {
@@ -18,6 +19,7 @@ export default class Produto {
         this.preco = preco;
         this.custo = custo;
         this.qtdVendida = 0;
+        this.valorTotalVendido = this.qtdVendida * this.preco
         this.margemLucro = ((this.preco - this.custo) / this.preco) * 100;
     }
 
@@ -40,12 +42,17 @@ export default class Produto {
         }
     }
 
+    public getValorTotalVendido(): number {
+        return this.valorTotalVendido
+    }
+
     public get getQtdVendida(): number {
         return this.qtdVendida;
     }
 
-    public setQtdVendida(qtdVendida: number): void {
-        this.qtdVendida = qtdVendida;
+    public addQtdVendida(qtdVendida: number): void {
+        this.qtdVendida += qtdVendida;
+        this.valorTotalVendido = this.qtdVendida * this.preco;
     }
 
     public get getPreco(): string {

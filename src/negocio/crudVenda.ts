@@ -14,21 +14,22 @@ export default class CadastroVenda extends Cadastro {
     }
 
     public cadastrar(): void {
-        console.log(`\nInício do cadastro de Venda`);
-        let codProduto = this.entrada.receberValor(`Informe o código do produto: `);
-        let codCliente = this.entrada.receberValor(`Informe o código do cliente: `)
+        let codProduto = this.entrada.receberValor('Informe o código do produto: ');
+        let codCliente = this.entrada.receberValor('Informe o código do cliente: ');
+        let qtdVendida = this.entrada.receberValor('Informe a quantidade vendida: ');
+
         let produto = Empresa.getProdutosPorId(codProduto);
         let cliente = Empresa.getClientePorId(codCliente);
-        if (produto && cliente) {
-            let qtd = this.entrada.receberValor(`Informe a quantidade vendida: `);
-            let codCliente = this.entrada.receberValor(`Informe o código do cliente: `);
-            let dataVenda = new Date();
 
-            let venda = new Venda(produto, cliente, dataVenda, codProduto, qtd, codCliente);
+        if (produto && cliente) {
+            let produtosVendidos = [{ produto, qtd: qtdVendida}];
+            let venda = new Venda(produtosVendidos, new Date(), codCliente);
+
             this.vendas.push(venda);
-            console.log(`\nCadastro concluído\n`);
+
+            console.log(`\nCadastro Concluído\n`);
         } else {
-            console.error("Produto não encontrado.");
-        }    
+            console.error("Produto ou Cliente não encontrado")
+        }
     }
 }
