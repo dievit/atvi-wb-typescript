@@ -24,7 +24,7 @@ export default class ListagemVendas extends Listagem {
 
             if (cliente) {
                 console.log("Cliente:", cliente.nome);
-                console.log("Telefone: ", cliente.getTelefone);
+                console.log("Telefone: ", cliente.getTelefone());
             }
 
             // Acessar os detalhes do produto
@@ -34,8 +34,8 @@ export default class ListagemVendas extends Listagem {
                 console.log("- Nome:", produto.nome);
                 console.log("- Categoria:", produto.categoria);
                 console.log("- Quantidade", qtd);
-                console.log("- Valor produto:", produto.getPreco)
-                console.log("- Total:", qtd * Number(produto.getPreco))
+                console.log("- Valor produto:", produto.getPreco())
+                console.log("- Total:", qtd * Number(produto.getPreco()))
                 console.log("\n***************************************************");
             });
         

@@ -1,53 +1,64 @@
-import Produto from "./produto"
 import Venda from "./venda";
 
 
 export default class Cliente {
     public nome: string
-    public nomeSocial?: string
+    private genero: string
     private cpf: number
     private cod = Cliente.proximoCodigo;
     private static proximoCodigo: number = 1;
     private dataCadastro: Date = new Date();
-    private telefone: number
+    private telefone: number;
+    private qtdComprada: number;
+    private valorGasto: number;
     private vendas: Venda[] = [];
-/*     private produtosConsumidos!: Array<Produto>
-    private produtosVendidos!: Array<Venda> */
     
-    constructor(dataCadastro: Date, nome: string, cpf: number, telefone: number, nomeSocial?: string) {
-            this.nome = nome
-            this.cpf = cpf
+    constructor(dataCadastro: Date, nome: string, cpf: number, telefone: number, genero: string) {
+            this.nome = nome;
+            this.cpf = cpf;
             this.cod = Cliente.proximoCodigo;
             Cliente.proximoCodigo++;
             this.dataCadastro = dataCadastro || new Date();
-            this.telefone = telefone
-            this.nomeSocial = nomeSocial
+            this.telefone = telefone;
+            this.genero = genero;
+            this.qtdComprada = 0;
+            this.valorGasto = 0;
 
-/*             this.produtosConsumidos = []
-            this.produtosVendidos = []
- */        
+    }
+    public getGenero(): string {
+        return this.genero;
+    }
+
+    public getQtdComprada(): number {
+        return this.qtdComprada;
+    }
+
+    public addQtdComprada(valor: number): void {
+        this.qtdComprada += valor;
+    }
+
+    public addValorGasto(valor: number): void {
+        this.valorGasto += valor;
+    }
+    public getValorGasto(): number {
+        return this.valorGasto;
     }
 
     public adicionarVenda(venda: Venda): void {
         this.vendas.push(venda);
     }
-    public get getCod(): string {
+    public getCod(): string {
         return this.cod.toString();
     }
 
-    public get getCpf(): number {
+    public getCpf(): number {
         return this.cpf
     }           
-    public get getTelefone(): number {
+    public getTelefone(): number {
         return this.telefone
     }
-    public get getDataCadastro(): Date {
+    public getDataCadastro(): Date {
         return this.dataCadastro
     }
 
-/*     public get getProdutosConsumidos(): Array<Produto> {
-        return this.produtosConsumidos
-    }
- */
-    
 }

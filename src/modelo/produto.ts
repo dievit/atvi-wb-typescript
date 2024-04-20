@@ -23,11 +23,11 @@ export default class Produto {
         this.margemLucro = ((this.preco - this.custo) / this.preco) * 100;
     }
 
-    public get getCod(): string {
+    public getCod(): string {
         return this.cod.toString();
     }
 
-    public get getDataValidade(): string {
+    public getDataValidade(): string {
         if (this.dataValidade !== undefined) {
             const dia = this.dataValidade.getDate();
             const mes = this.dataValidade.getMonth() + 1; // Mês é baseado em zero
@@ -46,7 +46,7 @@ export default class Produto {
         return this.valorTotalVendido
     }
 
-    public get getQtdVendida(): number {
+    public getQtdVendida(): number {
         return this.qtdVendida;
     }
 
@@ -55,15 +55,15 @@ export default class Produto {
         this.valorTotalVendido = this.qtdVendida * this.preco;
     }
 
-    public get getPreco(): string {
+    public getPreco(): string {
         return this.preco.toFixed(2);
     }
 
-    public get getCusto(): string {
+    public getCusto(): string {
         return this.custo.toFixed(2);
     }
 
-    public get getMargemLucro(): string {
+    public getMargemLucro(): string {
         return this.margemLucro.toFixed(2) + "%";
     }
 

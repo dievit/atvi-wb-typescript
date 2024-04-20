@@ -13,12 +13,18 @@ export default class CadastroCliente extends Cadastro {
     public cadastrar(): void {
         console.log(`\nInício do cadastro de Cliente`);
         let nome = this.entrada.receberTexto(`Informe o nome do cliente: `)
-        let nomeSocial = this.entrada.receberTexto(`Informe o nome social do cliente: `)
+        let genero: string;
+        do {
+            genero = this.entrada.receberTexto(`Informe o gênero ("M" para masculino, "F" para feminino): `).toUpperCase();
+            if (genero !== "M" && genero !== "F") {
+                console.error(`Formato inválido, por favor entre com "M" para Masculino e "F" para Feminino`);
+            }
+        } while (genero !== "M" && genero !== "F");
         let cpf = this.entrada.receberNumero(`Informe o número de CPF: `)
         let telefone = this.entrada.receberNumero(`Informe seu número de telefone com DDD: `)
         
         let dataCadastro = new Date()
-        let cliente = new Cliente(dataCadastro, nome, cpf, telefone, nomeSocial)
+        let cliente = new Cliente(dataCadastro, nome, cpf, telefone, genero)
         this.clientes.push(cliente)
         console.log(`\nCadastro concluído\n`)
     }

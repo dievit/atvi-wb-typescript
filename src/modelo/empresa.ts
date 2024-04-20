@@ -6,7 +6,6 @@ export default class Empresa {
     private static clientes: Cliente[];
     private static produtos: Produto[];
     private static vendas: Venda[];
-
     constructor() {
         Empresa.clientes = [];
         Empresa.produtos = [];
@@ -19,40 +18,41 @@ export default class Empresa {
      private preCadastrarClientes(): void {
         const dataCadastro = new Date();
         const listaDeClientes = [
-            { nome: "João da Silva", cpf: 12354387654, telefone: 11789653214},
-            { nome: "Maria Oliveira", cpf: 98765432109, telefone: 11987654321 },
-            { nome: "Pedro Santos", cpf: 87654321098, telefone: 11876543210 },
-            { nome: "Ana Souza", cpf: 76543210987, telefone: 11765432109 },
-            { nome: "Lucas Pereira", cpf: 65432109876, telefone: 11654321098 },
-            { nome: "Carla Lima", cpf: 54321098765, telefone: 11543210987 },
-            { nome: "Marcos Costa", cpf: 43210987654, telefone: 11432109876 },
-            { nome: "Juliana Almeida", cpf: 32109876543, telefone: 11321098765 },
-            { nome: "Rafael Fernandes", cpf: 21098765432, telefone: 11210987654 },
-            { nome: "Fernanda Gomes", cpf: 10987654321, telefone: 11109876543 },
-            { nome: "Thiago Silva", cpf: 99887766554, telefone: 11098765432 },
-            { nome: "Roberta Santos", cpf: 88776655444, telefone: 11988776655 },
-            { nome: "Diego Oliveira", cpf: 77665544333, telefone: 11877665544 },
-            { nome: "Camila Rodrigues", cpf: 66554433222, telefone: 11766554433 },
-            { nome: "José Pereira", cpf: 55443322111, telefone: 11655443322 },
-            { nome: "Sandra Alves", cpf: 44332211000, telefone: 11544332211 },
-            { nome: "Paulo Lima", cpf: 33221100099, telefone: 11433221100 },
-            { nome: "Mariana Oliveira", cpf: 22110009988, telefone: 11322110099 },
-            { nome: "Carlos Silva", cpf: 11000998877, telefone: 11211000988 },
-            { nome: "Aline Souza", cpf: 99988877766, telefone: 11199988877 },
-            { nome: "Maria Oliveira", cpf: 98765432109, telefone: 11987654321 },
-            { nome: "Pedro Santos", cpf: 87654321098, telefone: 11876543210 },
-            { nome: "Ana Souza", cpf: 76543210987, telefone: 11765432109 },
-            { nome: "Lucas Pereira", cpf: 65432109876, telefone: 11654321098 },
-            { nome: "Carla Lima", cpf: 54321098765, telefone: 11543210987 },
-            { nome: "Marcos Costa", cpf: 43210987654, telefone: 11432109876 },
-            { nome: "Juliana Almeida", cpf: 32109876543, telefone: 11321098765 },
-            { nome: "Rafael Fernandes", cpf: 21098765432, telefone: 11210987654 },
-            { nome: "Fernanda Gomes", cpf: 10987654321, telefone: 11109876543 },
-            { nome: "Thiago Silva", cpf: 99887766554, telefone: 11098765432 }
+            { nome: "João da Silva", cpf: 12354387654, telefone: 11789653214, genero: "M"},
+            { nome: "Maria Oliveira", cpf: 98765432109, telefone: 11987654321, genero: "F" },
+            { nome: "Pedro Santos", cpf: 87654321098, telefone: 11876543210, genero: "M" },
+            { nome: "Ana Souza", cpf: 76543210987, telefone: 11765432109, genero: "F" },
+            { nome: "Lucas Pereira", cpf: 65432109876, telefone: 11654321098, genero: "M" },
+            { nome: "Carla Lima", cpf: 54321098765, telefone: 11543210987, genero: "F" },
+            { nome: "Marcos Costa", cpf: 43210987654, telefone: 11432109876, genero: "M" },
+            { nome: "Juliana Almeida", cpf: 32109876543, telefone: 11321098765, genero: "F" },
+            { nome: "Rafael Fernandes", cpf: 21098765432, telefone: 11210987654, genero: "M" },
+            { nome: "Fernanda Gomes", cpf: 10987654321, telefone: 11109876543, genero: "F" },
+            { nome: "Thiago Silva", cpf: 99887766554, telefone: 11098765432, genero: "M" },
+            { nome: "Roberta Santos", cpf: 88776655444, telefone: 11988776655, genero: "F" },
+            { nome: "Diego Oliveira", cpf: 77665544333, telefone: 11877665544, genero: "M" },
+            { nome: "Camila Rodrigues", cpf: 66554433222, telefone: 11766554433, genero: "F" },
+            { nome: "José Pereira", cpf: 55443322111, telefone: 11655443322, genero: "M" },
+            { nome: "Sandra Alves", cpf: 44332211000, telefone: 11544332211, genero: "F" },
+            { nome: "Paulo Lima", cpf: 33221100099, telefone: 11433221100, genero: "M" },
+            { nome: "Mariana Oliveira", cpf: 22110009988, telefone: 11322110099, genero: "F" },
+            { nome: "Carlos Silva", cpf: 11000998877, telefone: 11211000988, genero: "M" },
+            { nome: "Aline Souza", cpf: 99988877766, telefone: 11199988877, genero: "F" },
+            { nome: "Maria Oliveira", cpf: 98765432109, telefone: 11987654321, genero: "F" },
+            { nome: "Pedro Santos", cpf: 87654321098, telefone: 11876543210, genero: "M" },
+            { nome: "Ana Souza", cpf: 76543210987, telefone: 11765432109, genero: "F" },
+            { nome: "Lucas Pereira", cpf: 65432109876, telefone: 11654321098, genero: "M" },
+            { nome: "Carla Lima", cpf: 54321098765, telefone: 11543210987, genero: "F" },
+            { nome: "Marcos Costa", cpf: 43210987654, telefone: 11432109876, genero: "M" },
+            { nome: "Juliana Almeida", cpf: 32109876543, telefone: 11321098765, genero: "F" },
+            { nome: "Rafael Fernandes", cpf: 21098765432, telefone: 11210987654, genero: "M" },
+            { nome: "Fernanda Gomes", cpf: 10987654321, telefone: 11109876543, genero: "F" },
+            { nome: "Thiago Silva", cpf: 99887766554, telefone: 11098765432, genero: "M" }
             ];
-            listaDeClientes.forEach(cliente => {
-                Empresa.clientes.push(new Cliente(dataCadastro, cliente.nome, cliente.cpf, cliente.telefone, ""));
-            })
+
+            listaDeClientes.forEach(cliente =>{
+                Empresa.clientes.push(new Cliente(dataCadastro, cliente.nome, cliente.cpf, cliente.telefone, cliente.genero));
+            });
         }
          
     private preCadastrarProdutos(): void {
@@ -81,7 +81,9 @@ export default class Empresa {
                 
                 listaDeProdutos.forEach(produto => {
                     Empresa.produtos.push(new Produto(produto.nome, produto.categoria, produto.dataValidade, produto.preco, produto.custo));
-                });    
+                });
+                
+                
             }
     
      private preCadastrarVendas(): void {
@@ -107,20 +109,21 @@ export default class Empresa {
             }
         })
     }
-    public get getClientes(): Array<Cliente> {
+
+    public static getClientes(): Cliente[] {
         return Empresa.clientes;
     }
-    public get getVendas(): Array<Venda> {
+    public getVendas(): Array<Venda> {
         return Empresa.vendas;
     }
     
-    public get getProdutos(): Array<Produto>{
+    public getProdutos(): Array<Produto>{
         return Empresa.produtos;
     }
 
     public static getProdutosPorId(id: number): Produto | null {
         for (const produto of Empresa.produtos) {
-            if (produto.getCod === id.toString()) {
+            if (produto.getCod() === id.toString()) {
                 return produto;
             }
         }
@@ -129,7 +132,7 @@ export default class Empresa {
 
     public static getClientePorId(id: number): Cliente | null {
     for (const cliente of this.clientes) {
-        if (parseInt(cliente.getCod) === id) {
+        if (Number(cliente.getCod()) === id) {
             return cliente;
         }
     }

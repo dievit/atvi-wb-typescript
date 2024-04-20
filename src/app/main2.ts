@@ -1,4 +1,5 @@
 import Entrada from "../io/entrada";
+import cliente from "../modelo/cliente";
 import Empresa from "../modelo/empresa";
 import CadastroCliente from "../negocio/crudCliente";
 import CadastroProduto from "../negocio/crudProduto";
@@ -41,15 +42,15 @@ while (execucao) {
 
                 switch (cadastrarOpcao) {
                     case 1:
-                        let cadastroCliente = new CadastroCliente(empresa.getClientes);
+                        let cadastroCliente = new CadastroCliente(Empresa.getClientes());
                         cadastroCliente.cadastrar();
                         break;
                     case 2:
-                        let cadastrarProduto = new CadastroProduto(empresa.getProdutos);
+                        let cadastrarProduto = new CadastroProduto(empresa.getProdutos());
                         cadastrarProduto.cadastrar();
                         break;
                     case 3:
-                        let cadastrarServico = new CadastroVenda(empresa.getVendas);
+                        let cadastrarServico = new CadastroVenda(empresa.getVendas());
                         cadastrarServico.cadastrar();
                         break;
                     default:
@@ -71,7 +72,7 @@ while (execucao) {
             let listarOpcao = entrada.receberNumero(`\nDigite uma opção → `);
             switch (listarOpcao) {
                 case 1:                            
-                    let listagemClientes = new ListagemClientes(empresa.getClientes);
+                    let listagemClientes = new ListagemClientes(Empresa.getClientes());
                     listagemClientes.listar();
                      break;                
                 case 2:
@@ -82,35 +83,43 @@ while (execucao) {
                     console.log("║       1 - Listagem Geral    ║");
                     console.log("║       2 - Mais vendido qtd  ║");
                     console.log("║       3 - Mais vendido (R$) ║");
+                    console.log("║       4 - Gasto do Cliente  ║");
                     console.log("║       0 - Voltar            ║");
                     console.log("╚═════════════════════════════╝");
 
                     let ordenar = entrada.receberNumero(`\nDigite uma opção → `)
                     switch (ordenar) {
                         case 1:
-                            let listagemProdutos = new ListagemProdutos(empresa.getProdutos);
+                            let listagemProdutos = new ListagemProdutos(empresa.getProdutos());
                             listagemProdutos.listar();
                             break;                                    
                         case 2:
-                            let listarPorQuantidade = new ListagemProdutos(empresa.getProdutos);
+                            let listarPorQuantidade = new ListagemProdutos(empresa.getProdutos());
                             let produtosOrdenadosPorQuantidade = listarPorQuantidade.listarPorQtdVendida();
                             produtosOrdenadosPorQuantidade.forEach(produto => {
-                                console.log(`\n${produto.nome} - Quantidade vendida: ${produto.getQtdVendida}`);
+                                console.log(`\n${produto.nome} - Quantidade vendida: ${produto.getQtdVendida()}`);
                             });
                             break;
                         case 3:
-                            let listarPorValor = new ListagemProdutos(empresa.getProdutos);
+                            let listarPorValor = new ListagemProdutos(empresa.getProdutos());
                             let produtosOrdenadosPorValorVendido = listarPorValor.listarPorValorTotalVendido();
                             produtosOrdenadosPorValorVendido.forEach(produto => {
                                 console.log(`\n${produto.nome} - Total em Vendas: R$${produto.getValorTotalVendido()}`);
                             });
+                            break;
+                        case 4:
+                            let listarClienteValor = new ListagemClientes(Empresa.getClientes());
+                            let clientesOrdenadosValor = listarClienteValor.listarClientePorValor();
+                            clientesOrdenadosValor.forEach(cliente => {
+                                console.log(`\n${cliente.nome} - total em compras: R$${cliente.getValorGasto()}`)
+                            })
                             break;
                         default:
                             console.log(`\nOpção inválida!`);
                     }
                     break;    
                 case 3: 
-                    let listagemVendas = new ListagemVendas(empresa.getVendas);
+                    let listagemVendas = new ListagemVendas(empresa.getVendas());
                     listagemVendas.listar();
                     break;
                 default:
