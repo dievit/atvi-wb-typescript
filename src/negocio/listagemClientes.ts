@@ -21,12 +21,40 @@ export default class ListagemClientes extends Listagem {
         })
         console.log(`\n`)
     }
-
-    public listarClienteQtd(): Cliente[] {
-        return this.clientes.slice().sort((a, b) => b.getQtdComprada() - a.getQtdComprada());
+    public listar5(): void {
+        this.clientes.forEach((cliente: Cliente) => {
+            console.log(`ID: `, cliente.getCod());
+            console.log(`Nome: `, cliente.getTelefone());
+            console.log(`Genero: `, cliente.getGenero());
+            console.log(`CPF: ` + cliente.getCpf());
+            console.log(`Data de cadastro: ` + cliente.getDataCadastro());
+            console.log(`Total Gasto R$`, cliente.getValorGasto());
+            console.log(`********************************`);
+        })
     }
 
-    public listarClientePorValor(): Cliente[] {
-        return this.clientes.slice().sort((a, b) => b.getValorGasto() - a.getValorGasto());
+    public listarMais10(): void {
+        this.clientes.forEach((cliente: Cliente) => {
+            console.log(`ID: `, cliente.getCod());
+            console.log(`Nome: `, cliente.getTelefone());
+            console.log(`Genero: `, cliente.getGenero());
+            console.log(`CPF: ` + cliente.getCpf());
+            console.log(`Data de cadastro: ` + cliente.getDataCadastro());
+            console.log(`Total Comprado em Qtd`, cliente.getQtdComprada());
+            console.log(`********************************`);
+
+        })
+    }
+
+    public listarMenos10(): void {
+        this.clientes.forEach((cliente: Cliente) => {
+            console.log(`ID: `, cliente.getCod());
+            console.log(`Nome: `, cliente.getTelefone());
+            console.log(`Genero: `, cliente.getGenero());
+            console.log(`CPF: ` + cliente.getCpf());
+            console.log(`Data de cadastro: ` + cliente.getDataCadastro());
+            console.log(`Total Comprado em Qtd`, cliente.getQtdComprada());
+            console.log(`********************************`);
+        })
     }
 }

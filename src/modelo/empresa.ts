@@ -137,5 +137,22 @@ export default class Empresa {
         }
     }
     return null;
-}
+    }
+
+    public static filtrarClientesPorGenero(genero) {
+        return this.clientes.filter(cliente => cliente.getGenero() === genero);
+    }
+
+    public static listarClienteQtd(): Cliente[] {
+        return this.clientes.slice().sort((a, b) => b.getQtdComprada() - a.getQtdComprada()).slice(0, 10);
+    }
+
+    public static listarClientesDezMenores(): Cliente[] {
+        return this.clientes.slice().sort((a, b) => a.getQtdComprada() - b.getQtdComprada()).slice(0,10);
+    }
+
+    public static listarClientePorValor(): Cliente[] {
+        return this.clientes.slice().sort((a, b) => b.getValorGasto() - a.getValorGasto()).slice(0, 5);
+    }
+    
 }

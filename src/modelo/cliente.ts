@@ -60,5 +60,5 @@ export default class Cliente {
     public getDataCadastro(): Date {
         return this.dataCadastro
     }
-
+    
 }

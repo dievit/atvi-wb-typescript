@@ -1,9 +1,11 @@
 import Entrada from "../io/entrada";
+import Cliente from "../modelo/cliente";
 import cliente from "../modelo/cliente";
 import Empresa from "../modelo/empresa";
 import CadastroCliente from "../negocio/crudCliente";
 import CadastroProduto from "../negocio/crudProduto";
 import CadastroVenda from "../negocio/crudVenda";
+import Listagem from "../negocio/listagem";
 import ListagemClientes from "../negocio/listagemClientes";
 import ListagemProdutos from "../negocio/listagemProdutos";
 import ListagemVendas from "../negocio/listagemVendas";
@@ -14,17 +16,19 @@ let empresa = new Empresa();
 let execucao = true;
         
 while (execucao) {
+    const entrada = new Entrada();
+    
     console.log("╔═══════════════════════════════════════════════════════════════════╗");
     console.log("║  Seja bem-vindo(a) ao cadastro de clientes do Grupo World Beauty` ║");
     console.log("╠═══════════════════════════════════════════════════════════════════╣");    
     console.log("║  Opções:                                                          ║");
     console.log("║       1 - Cadastrar                                               ║");
     console.log("║       2 - Listar                                                  ║");
+    console.log("║       3 - Terminal de Venda                                       ║");
     console.log("║       0 - Sair                                                    ║");
     console.log("╚═══════════════════════════════════════════════════════════════════╝");
             
-    let entrada = new Entrada();
-    let opcao = entrada.receberNumero(`\nDigite uma opção → `);
+    const opcao = entrada.receberNumero(`\nDigite uma opção → `);
         
     switch (opcao) {
         case 1:
@@ -34,105 +38,139 @@ while (execucao) {
             console.log("║  Opções:                   ║");
             console.log("║       1 - Cliente          ║");
             console.log("║       2 - Produto          ║");
-            console.log("║       3 - Venda            ║");
             console.log("║       0 - Voltar           ║");
             console.log("╚════════════════════════════╝");
         
-            let cadastrarOpcao = entrada.receberNumero(`\nDigite uma opção → `);
+            const cadastrarOpcao = entrada.receberNumero(`\nDigite uma opção → `);
 
                 switch (cadastrarOpcao) {
                     case 1:
-                        let cadastroCliente = new CadastroCliente(Empresa.getClientes());
+                        const cadastroCliente = new CadastroCliente(Empresa.getClientes());
                         cadastroCliente.cadastrar();
                         break;
                     case 2:
-                        let cadastrarProduto = new CadastroProduto(empresa.getProdutos());
+                        const cadastrarProduto = new CadastroProduto(empresa.getProdutos());
                         cadastrarProduto.cadastrar();
                         break;
-                    case 3:
-                        let cadastrarServico = new CadastroVenda(empresa.getVendas());
-                        cadastrarServico.cadastrar();
+                    case 0:
                         break;
                     default:
-                        console.log(`\nOpção inválida!`);
+                        console.log(`Opção Inválida!`);
             }
             break;
                 
         case 2:
-            console.log("╔════════════════════════════╗");
-            console.log("║  Listar                    ║");
-            console.log("╠════════════════════════════╣");    
-            console.log("║  Opções:                   ║");
-            console.log("║       1 - Cliente          ║");
-            console.log("║       2 - Produto          ║");
-            console.log("║       3 - Vendas           ║");
-            console.log("║       0 - Voltar           ║");
-            console.log("╚════════════════════════════╝");
+            console.log("╔══════════════════════════════════════════╗");
+            console.log("║  Listar                                  ║");
+            console.log("╠══════════════════════════════════════════╣");    
+            console.log("║  Opções:                                 ║");
+            console.log("║       1 - Listagens de Clientes          ║");
+            console.log("║       2 - Produto                        ║");
+            console.log("║       3 - Vendas                         ║");
+            console.log("║       0 - Voltar                         ║");
+            console.log("╚══════════════════════════════════════════╝");
         
-            let listarOpcao = entrada.receberNumero(`\nDigite uma opção → `);
-            switch (listarOpcao) {
-                case 1:                            
-                    let listagemClientes = new ListagemClientes(Empresa.getClientes());
-                    listagemClientes.listar();
-                     break;                
-                case 2:
-                    console.log("╔═════════════════════════════╗");
-                    console.log("║  Ordenar                    ║");
-                    console.log("╠═════════════════════════════╣");    
-                    console.log("║  Opções:                    ║");
-                    console.log("║       1 - Listagem Geral    ║");
-                    console.log("║       2 - Mais vendido qtd  ║");
-                    console.log("║       3 - Mais vendido (R$) ║");
-                    console.log("║       4 - Gasto do Cliente  ║");
-                    console.log("║       0 - Voltar            ║");
-                    console.log("╚═════════════════════════════╝");
+            const listarClientes = entrada.receberNumero(`\nDigite uma opção → `);
+            switch (listarClientes) {
+                case 1:
+                    console.log("╔════════════════════════════════════════════╗");
+                    console.log("║  Listagens de Clientes                     ║");
+                    console.log("╠════════════════════════════════════════════╣");    
+                    console.log("║  Opções:                                   ║");
+                    console.log("║       1 - Listagem Geral                   ║");
+                    console.log("║       2 - Listagem por Gênero Masculino    ║");
+                    console.log("║       3 - Listagem por Gênero Feminino     ║");
+                    console.log("║       4 - Top #5 que mais compraram em R$  ║");
+                    console.log("║       5 - Top #10 que MAIS compraram (qtd) ║");
+                    console.log("║       6 - Top #10 que MENOS compraram (qtd)║");
+                    console.log("║       0 - Voltar                           ║");
+                    console.log("╚════════════════════════════════════════════╝");
+                    
+                    const opcaoCliente = entrada.receberNumero(`\nDigite uma opção → `)
 
-                    let ordenar = entrada.receberNumero(`\nDigite uma opção → `)
+                    switch(opcaoCliente) {
+                        case 1:
+                            const listagemClientesGeral = new ListagemClientes(Empresa.getClientes());
+                            listagemClientesGeral.listar();
+                            break;
+
+                        case 2:
+                            const clientesMasc = new ListagemClientes(Empresa.filtrarClientesPorGenero('M'));
+                            clientesMasc.listar();
+                            break;
+
+                        case 3:
+                            const clienteFemi = new ListagemClientes(Empresa.filtrarClientesPorGenero('F'));
+                            clienteFemi.listar();
+                            break;
+                        
+                        case 4: 
+                            const listarTopFive = new ListagemClientes(Empresa.listarClientePorValor());
+                            listarTopFive.listar5();
+                            break;
+
+                        case 5:
+                            const topTenPlus = new ListagemClientes(Empresa.listarClienteQtd());
+                            topTenPlus.listarMais10();
+                            break;
+
+                        case 6:
+                            const topTenMinus = new ListagemClientes(Empresa.listarClientesDezMenores());
+                            topTenMinus.listarMenos10();
+                            break;
+
+                        case 0:
+                            break;
+                        default:
+                            console.log(`Opção Inválida!`);
+                    }
+                    break;
+                case 2:
+
+                    const ordenar = entrada.receberNumero(`\nDigite uma opção → `)
                     switch (ordenar) {
                         case 1:
-                            let listagemProdutos = new ListagemProdutos(empresa.getProdutos());
+                            const listagemProdutos = new ListagemProdutos(empresa.getProdutos());
                             listagemProdutos.listar();
                             break;                                    
                         case 2:
-                            let listarPorQuantidade = new ListagemProdutos(empresa.getProdutos());
-                            let produtosOrdenadosPorQuantidade = listarPorQuantidade.listarPorQtdVendida();
+                            const listarPorQuantidade = new ListagemProdutos(empresa.getProdutos());
+                            const produtosOrdenadosPorQuantidade = listarPorQuantidade.listarPorQtdVendida();
                             produtosOrdenadosPorQuantidade.forEach(produto => {
                                 console.log(`\n${produto.nome} - Quantidade vendida: ${produto.getQtdVendida()}`);
                             });
                             break;
                         case 3:
-                            let listarPorValor = new ListagemProdutos(empresa.getProdutos());
-                            let produtosOrdenadosPorValorVendido = listarPorValor.listarPorValorTotalVendido();
+                            const listarPorValor = new ListagemProdutos(empresa.getProdutos());
+                            const produtosOrdenadosPorValorVendido = listarPorValor.listarPorValorTotalVendido();
                             produtosOrdenadosPorValorVendido.forEach(produto => {
                                 console.log(`\n${produto.nome} - Total em Vendas: R$${produto.getValorTotalVendido()}`);
                             });
                             break;
-                        case 4:
-                            let listarClienteValor = new ListagemClientes(Empresa.getClientes());
-                            let clientesOrdenadosValor = listarClienteValor.listarClientePorValor();
-                            clientesOrdenadosValor.forEach(cliente => {
-                                console.log(`\n${cliente.nome} - total em compras: R$${cliente.getValorGasto()}`)
-                            })
+                        case 0:
                             break;
                         default:
                             console.log(`\nOpção inválida!`);
                     }
                     break;    
                 case 3: 
-                    let listagemVendas = new ListagemVendas(empresa.getVendas());
+                    const listagemVendas = new ListagemVendas(empresa.getVendas());
                     listagemVendas.listar();
                     break;
                 default:
                     console.log(`\nOpção inválida!`);
             }
             break;
-                
-        case 0:
-            execucao = false;
-            console.log(`\n««Até a próxima!»»`);
+        case 3:
+            const cadastrarVenda = new CadastroVenda(empresa.getVendas());
+            cadastrarVenda.cadastrar();
             break;
-        
-        default:
-            console.log(`\nOperação inválida, tente novamente!`);
+
+    case 0:
+        execucao = false;
+        console.log(`\n««Até a próxima!»»`);
+        break;        
+    default:
+        console.log(`\nOperação inválida, tente novamente!`);
     }
 }

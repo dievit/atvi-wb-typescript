@@ -28,5 +28,12 @@ export default class CadastroCliente extends Cadastro {
         this.clientes.push(cliente)
         console.log(`\nCadastro concluído\n`)
     }
-    
+    public editarCliente(id: number, novosDados: Partial<Cliente>): void {
+        const clienteIndex = this.clientes.findIndex(cliente => cliente.id === id);
+        if (clienteIndex !== -1) {
+            clientes[clienteIndex]
+        }
+    }
+
+
 }
