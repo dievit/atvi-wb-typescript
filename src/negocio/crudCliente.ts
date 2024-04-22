@@ -51,4 +51,14 @@ export default class CadastroCliente extends Cadastro {
             console.log(`Cliente com ID${cod} não encontrado.`)
         }
     }
+
+    public deletarCliente(cod: number): void {
+        const index = this.clientes.findIndex(cliente => cliente.getCod() === cod);
+        if (index !== -1) {
+            this.clientes.splice(index, 1);
+            console.log(`Cliente com ID ${cod} apagado com sucesso.`);
+        } else {
+            console.log(`Cliente com ID${cod} não encontrado.`);
+        }
+    }
 }

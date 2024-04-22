@@ -35,13 +35,15 @@ while (execucao) {
     switch (opcao) {
         case 1:
             console.log("╔════════════════════════════════╗");
-            console.log("║  Cadastrar/Editar              ║");
+            console.log("║  Cadastrar/Editar/Deletar      ║");
             console.log("╠════════════════════════════════╣");    
             console.log("║  Opções:                       ║");
             console.log("║       1 - Cadastrar Cliente    ║");
             console.log("║       2 - Editar Cliente       ║");
-            console.log("║       3 - Cadastrar Produto    ║");
-            console.log("║       4 - Editar Produto       ║");
+            console.log("║       3 - Deletar Cliente      ║");
+            console.log("║       4 - Cadastrar Produto    ║");
+            console.log("║       5 - Editar Produto       ║");
+            console.log("║       6 - Deletar Produto      ║");
             console.log("║                                ║");
             console.log("║       0 - Voltar               ║");
             console.log("╚════════════════════════════════╝");
@@ -57,15 +59,23 @@ while (execucao) {
                         const atualizarCadastroCliente = new CadastroCliente(Empresa.getClientes());
                         const idClienteParaAtualizar = entrada.receberNumero(`Informe o ID do cliente que deseja atualizar: `);
                         atualizarCadastroCliente.updateCliente(idClienteParaAtualizar);     
-
                     case 3:
-                        const cadastrarProduto = new CadastroProduto(empresa.getProdutos());
-                        cadastrarProduto.cadastrar();
+                        const deletarCadastroCliente = new CadastroCliente(Empresa.getClientes());
+                        const idClienteParaDeletar = entrada.receberNumero(`Informe o ID do cliente que deseja deletar: `);
+                        deletarCadastroCliente.deletarCliente(idClienteParaDeletar);
                         break;
                     case 4:
+                        const cadastrarProduto = new CadastroProduto(empresa.getProdutos());
+                        cadastrarProduto.cadastrar();
+                    case 5:
                         const atualizarCadastroProduto = new CadastroProduto(empresa.getProdutos());
                         const idProdutoParaAtualizar = entrada.receberNumero(`Informe o ID do produto que deseja atualizar: `);
                         atualizarCadastroProduto.updateProduto(idProdutoParaAtualizar);
+                        break;
+                    case 6:
+                        const deletarCadastroProduto = new CadastroProduto(empresa.getProdutos());
+                        const idProdutoParaDeletar = entrada.receberNumero(`Informe o ID do produto que deseja deletar: `);
+                        deletarCadastroProduto.deletarProduto(idProdutoParaDeletar);
                         break;
                     case 0:
                         break;

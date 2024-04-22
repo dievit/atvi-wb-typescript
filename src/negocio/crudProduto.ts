@@ -74,4 +74,14 @@ export default class CadastroProduto extends Cadastro {
             console.log(`Produto com ID ${cod} não encontrado.`);
         }
     }
+
+    public deletarProduto(cod: number): void {
+        const index = this.produtos.findIndex(produto => produto.getCod() === cod);
+        if (index !== -1) {
+            this.produtos.splice(index, -1);
+            console.log(`Produto com ID ${cod} apagado com sucesso.`);
+        } else {
+            console.log(`Produto com ID ${cod} não encontrado.`);
+        }
+    }
 }
