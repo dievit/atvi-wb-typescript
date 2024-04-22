@@ -28,12 +28,27 @@ export default class CadastroCliente extends Cadastro {
         this.clientes.push(cliente)
         console.log(`\nCadastro concluído\n`)
     }
-    public editarCliente(id: number, novosDados: Partial<Cliente>): void {
-        const clienteIndex = this.clientes.findIndex(cliente => cliente.id === id);
-        if (clienteIndex !== -1) {
-            clientes[clienteIndex]
+
+    public updateCliente(cod: number): void {
+        const clienteIndex = this.clientes.findIndex(cliente => cliente.getCod() === cod);
+
+        if(clienteIndex !== -1) {
+            const cliente = this.clientes[clienteIndex];
+            console.log(`Cliente encontrado: ${cliente.nome}`);
+
+            let novoNome = this.entrada.receberTexto(`Informe o novo nome do cliente: `);
+            let novoGenero = this.entrada.receberTexto(`Informe o novo gênero do cliente: `);
+            let novoCpf = this.entrada.receberNumero(`Informe o novo CPF do cliente: `);
+            let novoTelefone = this.entrada.receberNumero(`Informe o novo Telefone do cliente: `);
+
+            cliente.setNome(novoNome);
+            cliente.setGenero(novoGenero);
+            cliente.setCpf(novoCpf);
+            cliente.setTelefone(novoTelefone);
+
+            console.log(`Cliente atualizado com sucesso.`);
+        } else {
+            console.log(`Cliente com ID${cod} não encontrado.`)
         }
     }
-
-
 }

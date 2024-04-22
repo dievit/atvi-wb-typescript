@@ -47,8 +47,8 @@ export default class Cliente {
     public adicionarVenda(venda: Venda): void {
         this.vendas.push(venda);
     }
-    public getCod(): string {
-        return this.cod.toString();
+    public getCod(): number {
+        return this.cod;
     }
 
     public getCpf(): number {
@@ -60,5 +60,22 @@ export default class Cliente {
     public getDataCadastro(): Date {
         return this.dataCadastro
     }
+    
+    public setNome(novoNome: string): void {
+        this.nome = novoNome;
+    }
+
+    public setCpf(novoCpf: number): void {
+        this.cpf = novoCpf;
+    }
+
+    public setGenero(novoGenero: string): void {
+        this.genero = novoGenero;
+    }
+
+    public setTelefone(novoTelefone: number): void {
+        this.telefone = novoTelefone;
+    }
+
     
 }

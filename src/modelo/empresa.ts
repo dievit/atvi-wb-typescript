@@ -123,7 +123,7 @@ export default class Empresa {
 
     public static getProdutosPorId(id: number): Produto | null {
         for (const produto of Empresa.produtos) {
-            if (produto.getCod() === id.toString()) {
+            if (produto.getCod() === id) {
                 return produto;
             }
         }

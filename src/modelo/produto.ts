@@ -23,8 +23,8 @@ export default class Produto {
         this.margemLucro = ((this.preco - this.custo) / this.preco) * 100;
     }
 
-    public getCod(): string {
-        return this.cod.toString();
+    public getCod(): number {
+        return this.cod;
     }
 
     public getDataValidade(): string {
@@ -67,11 +67,23 @@ export default class Produto {
         return this.margemLucro.toFixed(2) + "%";
     }
 
-    public setPreco(preco: number): void {
-        this.preco = preco;
+    public setPreco(novoPreco: number): void {
+        this.preco = novoPreco;
     }
 
-    public setCusto(custo: number): void {
-        this.custo = custo;
+    public setCusto(novoCusto: number): void {
+        this.custo = novoCusto;
+    }
+
+    public setDataValidade(novaValidade: Date): void{
+        this.dataValidade = novaValidade;
+    }
+
+    public setNome(novoNome: string): void{
+        this.nome = novoNome;
+    }
+
+    public setCategoria(novaCategoria: string): void {
+        this.categoria = novaCategoria;
     }
 }

@@ -22,9 +22,11 @@ while (execucao) {
     console.log("║  Seja bem-vindo(a) ao cadastro de clientes do Grupo World Beauty` ║");
     console.log("╠═══════════════════════════════════════════════════════════════════╣");    
     console.log("║  Opções:                                                          ║");
-    console.log("║       1 - Cadastrar                                               ║");
+    console.log("║       1 - Cadastrar/Editar                                        ║");
     console.log("║       2 - Listar                                                  ║");
     console.log("║       3 - Terminal de Venda                                       ║");
+    console.log("║       4 - Editar um produto (TESTE)                               ║");
+    console.log("║                                                                   ║");
     console.log("║       0 - Sair                                                    ║");
     console.log("╚═══════════════════════════════════════════════════════════════════╝");
             
@@ -32,14 +34,17 @@ while (execucao) {
         
     switch (opcao) {
         case 1:
-            console.log("╔════════════════════════════╗");
-            console.log("║  Cadastrar                 ║");
-            console.log("╠════════════════════════════╣");    
-            console.log("║  Opções:                   ║");
-            console.log("║       1 - Cliente          ║");
-            console.log("║       2 - Produto          ║");
-            console.log("║       0 - Voltar           ║");
-            console.log("╚════════════════════════════╝");
+            console.log("╔════════════════════════════════╗");
+            console.log("║  Cadastrar/Editar              ║");
+            console.log("╠════════════════════════════════╣");    
+            console.log("║  Opções:                       ║");
+            console.log("║       1 - Cadastrar Cliente    ║");
+            console.log("║       2 - Editar Cliente       ║");
+            console.log("║       3 - Cadastrar Produto    ║");
+            console.log("║       4 - Editar Produto       ║");
+            console.log("║                                ║");
+            console.log("║       0 - Voltar               ║");
+            console.log("╚════════════════════════════════╝");
         
             const cadastrarOpcao = entrada.receberNumero(`\nDigite uma opção → `);
 
@@ -49,8 +54,18 @@ while (execucao) {
                         cadastroCliente.cadastrar();
                         break;
                     case 2:
+                        const atualizarCadastroCliente = new CadastroCliente(Empresa.getClientes());
+                        const idClienteParaAtualizar = entrada.receberNumero(`Informe o ID do cliente que deseja atualizar: `);
+                        atualizarCadastroCliente.updateCliente(idClienteParaAtualizar);     
+
+                    case 3:
                         const cadastrarProduto = new CadastroProduto(empresa.getProdutos());
                         cadastrarProduto.cadastrar();
+                        break;
+                    case 4:
+                        const atualizarCadastroProduto = new CadastroProduto(empresa.getProdutos());
+                        const idProdutoParaAtualizar = entrada.receberNumero(`Informe o ID do produto que deseja atualizar: `);
+                        atualizarCadastroProduto.updateProduto(idProdutoParaAtualizar);
                         break;
                     case 0:
                         break;
@@ -65,8 +80,9 @@ while (execucao) {
             console.log("╠══════════════════════════════════════════╣");    
             console.log("║  Opções:                                 ║");
             console.log("║       1 - Listagens de Clientes          ║");
-            console.log("║       2 - Produto                        ║");
-            console.log("║       3 - Vendas                         ║");
+            console.log("║       2 - Listagens de Produtos          ║");
+            console.log("║       3 - Listagem de Vendas             ║");
+            console.log("║                                          ║");
             console.log("║       0 - Voltar                         ║");
             console.log("╚══════════════════════════════════════════╝");
         
@@ -83,6 +99,7 @@ while (execucao) {
                     console.log("║       4 - Top #5 que mais compraram em R$  ║");
                     console.log("║       5 - Top #10 que MAIS compraram (qtd) ║");
                     console.log("║       6 - Top #10 que MENOS compraram (qtd)║");
+                    console.log("║                                            ║");
                     console.log("║       0 - Voltar                           ║");
                     console.log("╚════════════════════════════════════════════╝");
                     
@@ -126,6 +143,17 @@ while (execucao) {
                     }
                     break;
                 case 2:
+                    console.log("╔════════════════════════════════════════════╗");
+                    console.log("║  Listagens de Produtos                     ║");
+                    console.log("╠════════════════════════════════════════════╣");    
+                    console.log("║  Opções:                                   ║");
+                    console.log("║       1 - Listagem Geral                   ║");
+                    console.log("║       2 - Produtos mais consumidos (qtd)   ║");
+                    console.log("║       3 - Listagem por Gênero Masculino    ║");
+                    console.log("║       4 - Listagem por Gênero Feminino     ║");
+                    console.log("║                                            ║");
+                    console.log("║       0 - Voltar                           ║");
+                    console.log("╚════════════════════════════════════════════╝");
 
                     const ordenar = entrada.receberNumero(`\nDigite uma opção → `)
                     switch (ordenar) {
@@ -165,6 +193,8 @@ while (execucao) {
             const cadastrarVenda = new CadastroVenda(empresa.getVendas());
             cadastrarVenda.cadastrar();
             break;
+
+
 
     case 0:
         execucao = false;

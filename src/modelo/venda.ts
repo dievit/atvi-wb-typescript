@@ -35,7 +35,7 @@ export default class Venda {
 
     public getClienteAssociado(): Cliente | null {
         for (const cliente of Empresa.getClientes()) {
-            if (cliente.getCod() === this.codCliente.toString()) {
+            if (cliente.getCod() === this.codCliente) {
                 return cliente;
             }
         }
