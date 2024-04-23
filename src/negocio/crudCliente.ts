@@ -1,4 +1,5 @@
 import Entrada from "../io/entrada";
+import cliente from "../modelo/cliente";
 import Cliente from "../modelo/cliente";
 import Cadastro from "./cadastro";
 
@@ -41,10 +42,18 @@ export default class CadastroCliente extends Cadastro {
             let novoCpf = this.entrada.receberNumero(`Informe o novo CPF do cliente: `);
             let novoTelefone = this.entrada.receberNumero(`Informe o novo Telefone do cliente: `);
 
-            cliente.setNome(novoNome);
-            cliente.setGenero(novoGenero);
-            cliente.setCpf(novoCpf);
-            cliente.setTelefone(novoTelefone);
+            if(novoNome) {
+                cliente.setNome(novoNome);
+            }
+            if(novoGenero) {
+                cliente.setGenero(novoGenero);
+            }
+            if(novoCpf) {
+                cliente.setCpf(novoCpf);
+            }
+            if(novoTelefone) {
+                cliente.setTelefone(novoTelefone);
+            }
 
             console.log(`Cliente atualizado com sucesso.`);
         } else {
@@ -55,8 +64,10 @@ export default class CadastroCliente extends Cadastro {
     public deletarCliente(cod: number): void {
         const index = this.clientes.findIndex(cliente => cliente.getCod() === cod);
         if (index !== -1) {
+            const clienteDeletado = this.clientes[index];
+            const nomeClienteDeletado = clienteDeletado.getNome();
             this.clientes.splice(index, 1);
-            console.log(`Cliente com ID ${cod} apagado com sucesso.`);
+            console.log(`Cliente ${nomeClienteDeletado} com ID ${cod} apagado com sucesso.`);
         } else {
             console.log(`Cliente com ID${cod} não encontrado.`);
         }

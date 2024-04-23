@@ -1,4 +1,3 @@
-import Cliente from "../modelo/cliente";
 import Empresa from "../modelo/empresa";
 import Venda from "../modelo/venda";
 import Listagem from "./listagem";

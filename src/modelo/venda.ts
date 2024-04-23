@@ -1,7 +1,5 @@
-import cliente from "./cliente";
 import Cliente from "./cliente";
 import Empresa from "./empresa";
-import empresa from "./empresa";
 import Produto from "./produto";
 
 export default class Venda {

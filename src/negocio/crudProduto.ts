@@ -35,11 +35,18 @@ export default class CadastroProduto extends Cadastro {
             let novoCusto = this.entrada.receberValor(`Informe o novo preço de custo: `);
             let novoPreco = this.entrada.receberValor(`Informe o novo preço de venda: `);
             
-
-            produto.setNome(novoNome);
-            produto.setCategoria(novaCategoria);
-            produto.setCusto(novoCusto);
-            produto.setPreco(novoPreco);
+            if(novoNome) {
+                produto.setNome(novoNome);
+            }
+            if(novaCategoria) {
+                produto.setCategoria(novaCategoria);
+            }
+            if(novoCusto) {
+                produto.setCusto(novoCusto);
+            }
+            if(novoPreco) {
+                produto.setPreco(novoPreco);
+            }
 
             console.log(`Produto atualizado com sucesso.`);
         } else {
@@ -50,8 +57,10 @@ export default class CadastroProduto extends Cadastro {
     public deletarProduto(cod: number): void {
         const index = this.produtos.findIndex(produto => produto.getCod() === cod);
         if (index !== -1) {
+            const produtoDeletado = this.produtos[index];
+            const nomeProdutoDeletado = produtoDeletado.nome;
             this.produtos.splice(index, 1);
-            console.log(`Produto com ID ${cod} apagado com sucesso.`);
+            console.log(`Produto ${nomeProdutoDeletado} com ID ${cod} apagado com sucesso.`);
         } else {
             console.log(`Produto com ID ${cod} não encontrado.`);
         }

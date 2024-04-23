@@ -50,6 +50,9 @@ export default class Cliente {
     public getCod(): number {
         return this.cod;
     }
+    public getNome():string {
+        return this.nome;
+    }
 
     public getCpf(): number {
         return this.cpf

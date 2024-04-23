@@ -1,11 +1,8 @@
 import Entrada from "../io/entrada";
-import Cliente from "../modelo/cliente";
-import cliente from "../modelo/cliente";
 import Empresa from "../modelo/empresa";
 import CadastroCliente from "../negocio/crudCliente";
 import CadastroProduto from "../negocio/crudProduto";
 import CadastroVenda from "../negocio/crudVenda";
-import Listagem from "../negocio/listagem";
 import ListagemClientes from "../negocio/listagemClientes";
 import ListagemProdutos from "../negocio/listagemProdutos";
 import ListagemVendas from "../negocio/listagemVendas";
@@ -22,10 +19,9 @@ while (execucao) {
     console.log("║  Seja bem-vindo(a) ao cadastro de clientes do Grupo World Beauty` ║");
     console.log("╠═══════════════════════════════════════════════════════════════════╣");    
     console.log("║  Opções:                                                          ║");
-    console.log("║       1 - Cadastrar/Editar                                        ║");
+    console.log("║       1 - Cadastrar/Editar/Deletar                                ║");
     console.log("║       2 - Listar                                                  ║");
     console.log("║       3 - Terminal de Venda                                       ║");
-    console.log("║       4 - Editar um produto (TESTE)                               ║");
     console.log("║                                                                   ║");
     console.log("║       0 - Sair                                                    ║");
     console.log("╚═══════════════════════════════════════════════════════════════════╝");
@@ -196,6 +192,8 @@ while (execucao) {
                 case 3: 
                     const listagemVendas = new ListagemVendas(empresa.getVendas());
                     listagemVendas.listar();
+                    break;
+                case 0:
                     break;
                 default:
                     console.log(`\nOpção inválida!`);
