@@ -57,30 +57,30 @@ export default class Empresa {
          
     private preCadastrarProdutos(): void {
         const listaDeProdutos = [
-                { nome: "Gel para cabelo n5", categoria: "Cosméticos", dataValidade: new Date(2025, 4, 25), preco: 10.99, custo: 1.85 },
-                { nome: "Shampoo Anticaspa", categoria: "Cabelo", dataValidade: new Date(2024, 8, 30), preco: 12.99, custo: 8.99 },
-                { nome: "Condicionador Hidratante", categoria: "Cabelo", dataValidade: new Date(2024, 11, 15), preco: 9.99, custo: 6.99 },
-                { nome: "Gel Fixador", categoria: "Cabelo", dataValidade: new Date(2024, 9, 20), preco: 7.49, custo: 4.99 },
-                { nome: "Creme para Barbear  ", categoria: "Barba", dataValidade: new Date(2024, 10, 25), preco: 15.99, custo: 12.49 },
-                { nome: "Óleo para Barba", categoria: "Barba", dataValidade: new Date(2024, 7, 28), preco: 11.49, custo: 8.99 },
-                { nome: "Pente de Madeira", categoria: "Acessório", dataValidade: new Date(2025, 0, 10), preco: 5.99, custo: 3.99 },
-                { nome: "Cera Modeladora", categoria: "Cabelo", dataValidade: new Date(2024, 6, 15), preco: 8.99, custo: 6.49 },
-                { nome: "Tinta para Cabelo", categoria: "Cabelo", dataValidade: new Date(2024, 5, 20), preco: 14.99, custo: 10.49 },
-                { nome: "Loção Pós-barba", categoria: "Barba", dataValidade: new Date(2024, 9, 5), preco: 9.49, custo: 6.99 },
-                { nome: "Secador de Cabelo", categoria: "Acessório", dataValidade: new Date(2025, 2, 12), preco: 49.99, custo: 39.99 },
-                { nome: "Escova de Cabelo", categoria: "Acessório", dataValidade: new Date(2025, 4, 18), preco: 6.99, custo: 4.49 },
-                { nome: "Gel Esfoliante Facial", categoria: "Rosto", dataValidade: new Date(2024, 11, 30), preco: 11.99, custo: 8.49 },
-                { nome: "Máscara Facial", categoria: "Rosto", dataValidade: new Date(2024, 10, 8), preco: 7.99, custo: 5.49 },
-                { nome: "Creme Redutor de Medidas", categoria: "Corpo", dataValidade: new Date(2024, 9, 25), preco: 19.99, custo: 15.99 },
-                { nome: "Esfoliante Corporal", categoria: "Corpo", dataValidade: new Date(2024, 8, 14), preco: 8.49, custo: 5.99 },
-                { nome: "Spray Fixador de Maquiagem", categoria: "Maquiagem", dataValidade: new Date(2024, 7, 22), preco: 12.49, custo: 9.99 },
-                { nome: "Delineador de Olhos", categoria: "Maquiagem", dataValidade: new Date(2024, 5, 28), preco: 9.99, custo: 6.99 },
-                { nome: "Removedor de Esmalte", categoria: "Unhas", dataValidade: new Date(2024, 6, 10), preco: 5.49, custo: 3.99 },
-                { nome: "Creme Hidratante para Mãos", categoria: "Cuidados Pessoais", dataValidade: new Date(2024, 9, 15), preco: 6.99, custo: 4.99 }
+                { nome: "Gel para cabelo n5", categoria: "Cosméticos", preco: 10.99, custo: 1.85 },
+                { nome: "Shampoo Anticaspa", categoria: "Cabelo", preco: 12.99, custo: 8.99 },
+                { nome: "Condicionador Hidratante", categoria: "Cabelo", preco: 9.99, custo: 6.99 },
+                { nome: "Gel Fixador", categoria: "Cabelo", preco: 7.49, custo: 4.99 },
+                { nome: "Creme para Barbear  ", categoria: "Barba", preco: 15.99, custo: 12.49 },
+                { nome: "Óleo para Barba", categoria: "Barba", preco: 11.49, custo: 8.99 },
+                { nome: "Pente de Madeira", categoria: "Acessório", preco: 5.99, custo: 3.99 },
+                { nome: "Cera Modeladora", categoria: "Cabelo", preco: 8.99, custo: 6.49 },
+                { nome: "Tinta para Cabelo", categoria: "Cabelo", preco: 14.99, custo: 10.49 },
+                { nome: "Loção Pós-barba", categoria: "Barba", preco: 9.49, custo: 6.99 },
+                { nome: "Secador de Cabelo", categoria: "Acessório", preco: 49.99, custo: 39.99 },
+                { nome: "Escova de Cabelo", categoria: "Acessório", preco: 6.99, custo: 4.49 },
+                { nome: "Gel Esfoliante Facial", categoria: "Rosto", preco: 11.99, custo: 8.49 },
+                { nome: "Máscara Facial", categoria: "Rosto", preco: 7.99, custo: 5.49 },
+                { nome: "Creme Redutor de Medidas", categoria: "Corpo", preco: 19.99, custo: 15.99 },
+                { nome: "Esfoliante Corporal", categoria: "Corpo", preco: 8.49, custo: 5.99 },
+                { nome: "Spray Fixador de Maquiagem", categoria: "Maquiagem", preco: 12.49, custo: 9.99 },
+                { nome: "Delineador de Olhos", categoria: "Maquiagem", preco: 9.99, custo: 6.99 },
+                { nome: "Removedor de Esmalte", categoria: "Unhas", preco: 5.49, custo: 3.99 },
+                { nome: "Creme Hidratante para Mãos", categoria: "Cuidados Pessoais", preco: 6.99, custo: 4.99 }
                 ];
                 
                 listaDeProdutos.forEach(produto => {
-                    Empresa.produtos.push(new Produto(produto.nome, produto.categoria, produto.dataValidade, produto.preco, produto.custo));
+                    Empresa.produtos.push(new Produto(produto.nome, produto.categoria, produto.preco, produto.custo));
                 });
                 
                 

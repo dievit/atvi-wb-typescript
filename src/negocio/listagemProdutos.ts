@@ -14,10 +14,18 @@ export default class ListagemProdutos extends Listagem {
             console.log(`ID: ` + produto.getCod())
             console.log(`Nome: ` + produto.nome)
             console.log(`Categoria: ` + produto.categoria)
-            console.log(`Data de validade: ` + (produto.getDataValidade() ? produto.getDataValidade() : "sem validade"))
-            console.log(`Preço de custo: R$` + produto.getCusto())
-            console.log(`Preço de venda: R$` + produto.getPreco())
-            console.log(`Margem de lucro: ` + produto.getMargemLucro())
+            
+            let produtoCusto: number = produto.getCusto();
+            let produtoCustoFormatado: string = produtoCusto.toFixed(2);
+                console.log(`Preço de custo: R$` + (produtoCustoFormatado))
+            
+                let produtoPreco: number = produto.getPreco();
+            let produtoPrecoFormatado: string = produtoPreco.toFixed(2);    
+                console.log(`Preço de venda: R$` + (produtoPrecoFormatado));
+            
+            let margem: number = produto.getMargemLucro();
+            let margemFormatada: string = margem.toFixed(2);
+                console.log(`Margem de lucro: ` + (margemFormatada)+"%")
             console.log(`********************************`)
         })
         console.log(`\n`)

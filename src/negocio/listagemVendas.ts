@@ -31,11 +31,17 @@ export default class ListagemVendas extends Listagem {
             console.log("\nItens da venda:");
             const itensVendidos = venda.getItensVendidos();
             itensVendidos.forEach(({ produto, qtd}) => {
-                console.log("- Nome:", produto.nome);
-                console.log("- Categoria:", produto.categoria);
-                console.log("- Quantidade", qtd);
-                console.log("- Valor produto:", produto.getPreco())
-                console.log("- Total:", qtd * Number(produto.getPreco()))
+                console.log("- Nome: ", produto.nome);
+                console.log("- Categoria: ", produto.categoria);
+                console.log("- Quantidade: ", qtd);
+                
+                let valorProduto: number = produto.getPreco();
+                let valorProdutoFormatado: string = valorProduto.toFixed(2);
+                    console.log("- Valor produto: R$"+(valorProdutoFormatado));
+
+                let totalCompra: number = qtd * Number(produto.getPreco());
+                let totalCompraFormatada: string = totalCompra.toFixed(2);
+                    console.log("- Total: R$"+(totalCompraFormatada) );
                 console.log("\n***************************************************");
             });
         

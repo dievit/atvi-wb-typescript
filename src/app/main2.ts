@@ -58,7 +58,8 @@ while (execucao) {
                     case 2:
                         const atualizarCadastroCliente = new CadastroCliente(Empresa.getClientes());
                         const idClienteParaAtualizar = entrada.receberNumero(`Informe o ID do cliente que deseja atualizar: `);
-                        atualizarCadastroCliente.updateCliente(idClienteParaAtualizar);     
+                        atualizarCadastroCliente.updateCliente(idClienteParaAtualizar);
+                        break;     
                     case 3:
                         const deletarCadastroCliente = new CadastroCliente(Empresa.getClientes());
                         const idClienteParaDeletar = entrada.receberNumero(`Informe o ID do cliente que deseja deletar: `);
@@ -67,6 +68,7 @@ while (execucao) {
                     case 4:
                         const cadastrarProduto = new CadastroProduto(empresa.getProdutos());
                         cadastrarProduto.cadastrar();
+                        break;
                     case 5:
                         const atualizarCadastroProduto = new CadastroProduto(empresa.getProdutos());
                         const idProdutoParaAtualizar = entrada.receberNumero(`Informe o ID do produto que deseja atualizar: `);
@@ -203,9 +205,6 @@ while (execucao) {
             const cadastrarVenda = new CadastroVenda(empresa.getVendas());
             cadastrarVenda.cadastrar();
             break;
-
-
-
     case 0:
         execucao = false;
         console.log(`\n««Até a próxima!»»`);
