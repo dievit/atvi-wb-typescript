@@ -7,8 +7,6 @@ import ListagemClientes from "../negocio/listagemClientes";
 import ListagemProdutos from "../negocio/listagemProdutos";
 import ListagemVendas from "../negocio/listagemVendas";
 
-
-
 let empresa = new Empresa();
 let execucao = true;
         
@@ -90,6 +88,7 @@ while (execucao) {
             console.log("║       1 - Listagens de Clientes          ║");
             console.log("║       2 - Listagens de Produtos          ║");
             console.log("║       3 - Listagem de Vendas             ║");
+            console.log("║       4 - Gerar TXT lista de clientes    ║");
             console.log("║                                          ║");
             console.log("║       0 - Voltar                         ║");
             console.log("╚══════════════════════════════════════════╝");
@@ -193,6 +192,7 @@ while (execucao) {
                     const listagemVendas = new ListagemVendas(empresa.getVendas());
                     listagemVendas.listar();
                     break;
+
                 case 0:
                     break;
                 default:
@@ -203,11 +203,12 @@ while (execucao) {
             const cadastrarVenda = new CadastroVenda(empresa.getVendas());
             cadastrarVenda.cadastrar();
             break;
-    case 0:
-        execucao = false;
-        console.log(`\n««Até a próxima!»»`);
-        break;        
-    default:
-        console.log(`\nOperação inválida, tente novamente!`);
-    }
+
+        case 0:
+            execucao = false;
+            console.log(`\n««Até a próxima!»»`);
+            break;        
+        default:
+            console.log(`\nOperação inválida, tente novamente!`);
+        }
 }
