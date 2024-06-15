@@ -19,14 +19,12 @@ export default class ListagemVendas extends Listagem {
             console.log("ID da Venda:", venda.getCodVenda());
             console.log("Data da Venda:", venda.getDataVenda());
 
-            // Acessar os detalhes do cliente a partir do ID
 
             if (cliente) {
                 console.log("Cliente:", cliente.nome);
                 console.log("Telefone: ", cliente.getTelefone());
             }
 
-            // Acessar os detalhes do produto
             console.log("\nItens da venda:");
             const itensVendidos = venda.getItensVendidos();
             itensVendidos.forEach(({ produto, qtd}) => {
